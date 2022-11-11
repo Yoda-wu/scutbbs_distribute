@@ -36,7 +36,7 @@ Spring中实现IoC容器的主要的包是：`org.springframework.beans`和`org.
 
 ##### Configuration Metadata
 
-
+Configuration Metadata一般来说是使用xml文件的形式来告诉Spring的IoC容器，因为通过XML文件配置，会比直接硬编码的形式更加解耦。IoC只需要读入文件即可。但是我一般是选用注解来完成Configuration Metadata的注入。
 
 ### 
 
