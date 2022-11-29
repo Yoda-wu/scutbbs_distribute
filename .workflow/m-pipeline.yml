@@ -66,8 +66,7 @@ stages:
           - tar -zxf output.tar.gz
           - cd target
           - java -version
-          - nohup java -jar scutbbs-0.0.1-SNAPSHOT.jar
-          - echo 'Deploy Success!'
+          - nohup java -jar scutbbs-0.0.1-SNAPSHOT.jar --server.port=8081 & echo 'Deploy Success!'
         notify: []
         strategy:
           retry: '0'
