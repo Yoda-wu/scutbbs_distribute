@@ -41,4 +41,36 @@ stages:
         displayName: 发布
         dependArtifact: output
         version: 1.0.0.0
-        autoIncrement: true
+        autoIncrement: true 
+  name: deploy
+  displayName: 部署
+  steps:
+    - step: deploy@agent
+      name: deploy_agent
+      displayName: '主机部署'
+      hostGroupID: lhins-75oq1l9h
+      deployArtifact:
+          # 部署包来源，build表示来源于上游流水线，artifact表示来源于制品仓库，推荐使用build
+        - source: artifact
+          # 将部署包下载到主机后的部署包名，默认output
+          name: output
+          # 将部署包下载主机的具体目录，默认 ~/gitee_go/deoloy
+          target: ~/gitee_go/deoloy
+          # 上游制品名，只有当source为build时生效，默认output
+          dependArtifact: output
+          # 以下内容只有在source为artifact时生效，制品库名，默认default
+          artifactRepository: release
+          # 制品名，默认output
+          artifactName: output
+          # 制品版本，默认取最新
+          artifactVersion: latest
+      script: 
+        |
+        cd ~/gitee_go/deoloy
+        ls
+        tar -zxf output.tar.gz
+        cd target
+        nohup java -jar maven-demo-0.0.1-SNAPSHOT.jar --server.port=7081 & 
+        echo "Deploy Success"
+        sleep 10
+        curl 127.0.0.1:7081
