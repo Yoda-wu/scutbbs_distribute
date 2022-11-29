@@ -51,10 +51,8 @@ stages:
       - step: deploy@agent
         name: deploy_agent
         displayName: 主机部署
-        hostGroupID:
-          ID: lhins-75oq1l9h
-          hostID:
-            - d1f27211-68ad-4109-9464-cd38479502dd
+        hostGroupID: lhins-75oq1l9h
+          
         deployArtifact:
           - source: artifact
             name: output
