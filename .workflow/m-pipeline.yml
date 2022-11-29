@@ -56,10 +56,13 @@ stages:
           hostID:
             - d1f27211-68ad-4109-9464-cd38479502dd
         deployArtifact:
-          - source: build
+          - source: artifact
             name: output
             target: ~/gitee_go/deploy
             dependArtifact: output
+            artifactRepository: release
+            artifactName: output
+            artifactVersion: latest
         script:
           - cd ~/gitee_go/deoloy
           - ls
