@@ -75,6 +75,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -82,12 +83,14 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/school/Junior/epm/golden-bag-backend",
+    "last_opened_file_path": "D:/coding/scutbbs",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "MTConfigurable"
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "MTConfigurable",
+    "spring.configuration.checksum": "d28f07bd03a7dd33c15a70251be752b8"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -95,7 +98,7 @@
       <recent name="com.scut.community.scutbbs.dao" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ScutbbsApplicationTests.testDI">
+  <component name="RunManager" selected="Spring Boot.ScutbbsApplication">
     <configuration name="ScutbbsApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="scutbbs" />
       <extension name="coverage">
@@ -186,6 +189,7 @@
       <updated>1667907319348</updated>
       <workItem from="1667907320781" duration="165000" />
       <workItem from="1667907538696" duration="7897000" />
+      <workItem from="1669715732475" duration="329000" />
     </task>
     <servers />
   </component>
