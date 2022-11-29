@@ -42,30 +42,32 @@ stages:
         dependArtifact: output
         version: 1.0.0.0
         autoIncrement: true
-  - name: deploy
+  - name: stage-a715b175
     displayName: 部署
     strategy: naturally
     trigger: auto
+    executor: []
     steps:
       - step: deploy@agent
         name: deploy_agent
         displayName: 主机部署
-        hostGroupID: lhins-75oq1l9h
+        hostGroupID:
+          ID: lhins-75oq1l9h
+          hostID:
+            - d1f27211-68ad-4109-9464-cd38479502dd
         deployArtifact:
-          - source: artifact
+          - source: build
             name: output
-            target: ~/gitee_go/deoloy
+            target: ~/gitee_go/deploy
             dependArtifact: output
-            artifactRepository: release
-            artifactName: output
-            artifactVersion: latest
         script:
           - cd ~/gitee_go/deoloy
           - ls
           - tar -zxf output.tar.gz
           - cd target
-          - nohup java -jar scutbbs-0.0.1-SNAPSHOT.jar 
-          - echo "Deploy Success"
-          - sleep 10
-          - curl 127.0.0.1:8081
-          - 
+          - java --version
+          - nohup java -jar scutbbs-0.0.1-SNAPSHOT.jar
+          - echo 'Deploy Success!'
+        notify: []
+        strategy:
+          retry: '0'
