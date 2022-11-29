@@ -64,8 +64,8 @@ stages:
           - ls
           - tar -zxf output.tar.gz
           - cd target
-          - 'nohup java -jar scutbbs-0.0.1-SNAPSHOT.jar '
+          - nohup java -jar scutbbs-0.0.1-SNAPSHOT.jar 
           - echo "Deploy Success"
           - sleep 10
           - curl 127.0.0.1:8081
-          - ''
+          - 
