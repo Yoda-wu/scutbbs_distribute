@@ -15,7 +15,7 @@ IOC是控制反转的意思。通常来说，我们都是在类的内部主动�
 “解耦”是软件工程里永远追寻的目标。
 
 
-![img.png](Readme.assets/img.png)
+![img.png](./Readme.assets/img.png)
 
 
 
@@ -23,7 +23,7 @@ IOC是控制反转的意思。通常来说，我们都是在类的内部主动�
 有了IoC容器之后，把创建和查找对象的职责委托给IoC容器，由容器来进行注入组合对象，所以对象和对象直接的联系是松散的。
 控制翻转的过程就是获取对象的过程，被翻转了。由原本主动去创建对象，获取对象，翻转成IoC容器注入对象。
 
-![img_1.png](Readme.assets/img_1.png)
+![img_1.png](./Readme.assets/img_1.png)
 
 DI——Dependency Injection 依赖注入，这理解为IoC这种思想的实现方式。
 
@@ -31,7 +31,7 @@ IoC Container —— IoC容器，它是依赖注入实现的关键，本质上�
 
 Spring 实现IoC的方式如下图：
 
-![img_2.png](Readme.assets/img_2.png)
+![img_2.png](./Readme.assets/img_2.png)
 
 Spring中实现IoC容器的主要的包是：`org.springframework.beans`和`org.springframework.context`。主要的接口：`BeanFactory`提供了一种高级的配置机制，能够管理任何类型的对象。而`ApplicationContext`是`BeanFactory`的子接口，它提供了更多企业级的具体功能。
 
