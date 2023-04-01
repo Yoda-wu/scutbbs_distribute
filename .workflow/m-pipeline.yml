@@ -1,0 +1,72 @@
+version: '1.0'
+name: m-pipeline
+displayName: m-pipeline
+triggers:
+  trigger: auto
+  push:
+    branches:
+      include:
+        - master
+stages:
+  - name: compile
+    displayName: 编译
+    strategy: naturally
+    trigger: auto
+    steps:
+      - step: build@maven
+        name: build_maven
+        displayName: Maven 构建
+        jdkVersion: '17'
+        mavenVersion: 3.6.1
+        commands:
+          - mvn -B clean package -Dmaven.test.skip=true
+        artifacts:
+          - name: BUILD_ARTIFACT
+            path:
+              - ./target
+        strategy: {}
+      - step: publish@general_artifacts
+        name: publish_general_artifacts
+        displayName: 上传制品
+        dependArtifact: BUILD_ARTIFACT
+        artifactName: output
+        dependsOn: build_maven
+  - name: release
+    displayName: 发布
+    strategy: naturally
+    trigger: auto
+    steps:
+      - step: publish@release_artifacts
+        name: publish_release_artifacts
+        displayName: 发布
+        dependArtifact: output
+        version: 1.0.0.0
+        autoIncrement: true
+  - name: stage-a715b175
+    displayName: 部署
+    strategy: naturally
+    trigger: auto
+    executor: []
+    steps:
+      - step: deploy@agent
+        name: deploy_agent
+        displayName: 主机部署
+        hostGroupID: lhins-75oq1l9h
+        deployArtifact:
+          - source: artifact
+            name: output
+            target: ~/gitee_go/deploy
+            dependArtifact: output
+            artifactRepository: release
+            artifactName: output
+            artifactVersion: latest
+        script:
+          - cd ~/gitee_go/deoloy
+          - ls
+          - tar -zxf output.tar.gz
+          - cd target
+          - java -version
+          - nohup java -jar scutbbs-0.0.1-SNAPSHOT.jar --server.port=8081 & echo 'Deploy Success!'
+        notify: []
+        strategy:
+          retry: '0'
